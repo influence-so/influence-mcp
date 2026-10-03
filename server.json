@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.influence-so/influence-mcp",
+  "title": "Influence",
+  "description": "Draft, review, schedule or publish approved social posts, and check publishing status.",
+  "version": "0.1.0",
+  "websiteUrl": "https://influence.so",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://influence.so/api/mcp"
+    }
+  ]
+}

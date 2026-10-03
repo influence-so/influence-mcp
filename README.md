@@ -37,6 +37,12 @@ IQ planning and image generation spend credits only through their explicitly con
 
 See [how Influence works](https://influence.so/how-it-works), [publishing from ChatGPT](https://influence.so/publish-from-chatgpt), [privacy](https://influence.so/privacy), [terms](https://influence.so/terms) and [support](https://influence.so/support).
 
+## Registry metadata
+
+`server.json` describes the hosted endpoint for the official MCP Registry under `io.github.influence-so/influence-mcp`. It does not identify this customer connector as the service implementation source.
+
+Authorized maintainers can manually run the **Publish to MCP Registry** GitHub workflow on this repository's `main` branch. It validates the manifest and uses the official publisher with GitHub OIDC, without a dedicated registry secret. A workflow file or successful validation does not establish that a registry entry has been published; check the workflow result and public registry record. See the [official publishing guide](https://modelcontextprotocol.io/registry/github-actions).
+
 ## License and branding
 
 The connection configuration, customer skill and documentation are released under [MIT-0](LICENSE). Files under `assets/`, including the Influence logo, are excluded; see [brand use](BRAND-USAGE.md). The license does not cover the hosted application or grant access to customer data or paid service features.
