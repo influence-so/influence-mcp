@@ -1,0 +1,16 @@
+{
+  "name": "influence-mcp",
+  "description": "Connect your assistant to your Influence publishing workspace.",
+  "owner": {
+    "name": "Influence",
+    "url": "https://influence.so"
+  },
+  "plugins": [
+    {
+      "name": "influence",
+      "source": "./",
+      "description": "Draft, review and schedule social posts through your Influence workspace.",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "influence",
+  "version": "0.1.0",
+  "description": "Draft, review and schedule social posts through your Influence workspace.",
+  "author": {
+    "name": "Influence",
+    "url": "https://influence.so"
+  },
+  "homepage": "https://influence.so/publish-from-chatgpt",
+  "repository": "https://github.com/influence-so/influence-mcp",
+  "license": "MIT-0",
+  "keywords": ["social-media", "publishing", "scheduling", "mcp"]
+}

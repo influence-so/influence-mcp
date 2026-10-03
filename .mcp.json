@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "influence": {
+      "type": "http",
+      "url": "https://influence.so/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${INFLUENCE_MCP_TOKEN}"
+      }
+    }
+  }
+}
