@@ -1,6 +1,6 @@
 ---
 name: influence
-description: Use saved brand context, generate content and images, review and publish social posts, and read available Insights through Influence.
+description: Use saved brand context to plan campaigns, prepare editable drafts, review media and schedule approved posts across connected social accounts, including WhatsApp Business. Read delivery status and saved account-post Insights through Influence’s hosted MCP using your own account and scoped access.
 ---
 
 # Influence
@@ -68,7 +68,14 @@ Publishing supports one composition and one static image per destination on the 
 - devtoOrganizationList
 - devtoTagList
 - discordChannelList
+- discourseCategoryList
+- discourseTagList
+- discourseTopicSearch
 - dribbbleTeamList
+- ghostAuthorList
+- ghostNewsletterList
+- ghostTagList
+- ghostTierList
 - hashnodePublicationList
 - lemmyCommunitySearch
 - listmonkListsGet

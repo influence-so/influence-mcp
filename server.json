@@ -2,9 +2,16 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.influence-so/influence-mcp",
   "title": "Influence",
-  "description": "Draft, review, schedule or publish approved social posts, and check publishing status.",
-  "version": "0.1.0",
+  "description": "Plan social campaigns, draft and review posts, schedule approved publishing, and read Insights.",
+  "version": "0.1.1",
   "websiteUrl": "https://influence.so",
+  "icons": [
+    {
+      "src": "https://influence.so/icon.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
   "remotes": [
     {
       "type": "streamable-http",
