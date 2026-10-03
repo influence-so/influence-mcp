@@ -25,6 +25,18 @@ Try asking your connected assistant:
 - “Show the status and published links for that campaign.”
 - “Summarize the available Insights for our connected accounts.”
 
+## Workflow in Influence
+
+Prepare and edit a draft, choose its accounts, and review how it will appear on each channel.
+
+![Influence composer with an editable draft and connected-account previews](https://influence.so/images/influence-composer.jpg)
+
+Use the calendar to see approved scheduled campaigns by date and account.
+
+![Influence calendar showing scheduled campaigns in a weekly view](https://influence.so/images/influence-calendar.jpg)
+
+Both images show an example workspace in the current Influence UI.
+
 ## Connections
 
 Influence brings your channels into one workspace:

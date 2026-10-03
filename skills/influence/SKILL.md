@@ -1,6 +1,9 @@
 ---
 name: influence
 description: Use saved brand context to plan campaigns, prepare editable drafts, review media and schedule approved posts across connected social accounts, including WhatsApp Business. Read delivery status and saved account-post Insights through Influence’s hosted MCP using your own account and scoped access.
+metadata:
+  openclaw:
+    homepage: https://influence.so
 ---
 
 # Influence

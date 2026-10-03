@@ -3,7 +3,7 @@
   "name": "io.github.influence-so/influence-mcp",
   "title": "Influence",
   "description": "Plan social campaigns, draft and review posts, schedule approved publishing, and read Insights.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://influence.so",
   "icons": [
     {
@@ -17,5 +17,12 @@
       "type": "streamable-http",
       "url": "https://influence.so/api/mcp"
     }
-  ]
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "documentationUrl": "https://github.com/influence-so/influence-mcp#readme",
+      "supportUrl": "https://influence.so/support",
+      "accessNotes": "An Influence account and authorized workspace are required. Connect with OAuth or a scoped API key."
+    }
+  }
 }
