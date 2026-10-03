@@ -2,7 +2,7 @@
 
 # Influence
 
-Plan, review and publish social campaigns with AI. Connect your assistant to [Influence](https://influence.so) to turn ideas into drafts, schedule approved posts for connected accounts, and read available Insights.
+Influence is a social media management tool for planning campaigns, writing posts and scheduling content across your connected accounts. Its hosted MCP server lets compatible AI assistants use your saved brand voice to prepare drafts, schedule approved posts and read saved results in Insights. Review posts and images in Influence before approving publication or a schedule change.
 
 [Website](https://influence.so) · [How it works](https://influence.so/how-it-works) · [ChatGPT guide](https://influence.so/publish-from-chatgpt) · [Support](https://influence.so/support)
 
