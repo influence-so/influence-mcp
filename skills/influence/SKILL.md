@@ -26,6 +26,16 @@ Reviews and image quotes return expiresAtIso. Display that exact UTC expiry; add
 
 Read the latest campaign. Request a new review with reschedule and its new UTC instant, or return_to_draft to cancel future delivery while keeping the composition editable. Send the current version. Show the review and obtain fresh approval using the same text or image path above. Already sent, in-flight, ambiguous or changed jobs are not safely editable. Returning to draft retains content, image, settings and history; subsequent publishing requires a new review.
 
+## WhatsApp Business messages
+
+accountList includes WhatsApp accounts in its bounded pagination; kind: whatsapp selects only messaging accounts, while kind: social selects social accounts. Its connectionId is the WhatsApp accountPublicId. Read integrationSchema with platform: whatsapp for the native message contract. Eligibility remains current account readiness, consent and message validation, not a guarantee that every recipient or format can be sent.
+
+Use whatsappContactList with that accountPublicId to read exact contact publicIds, recipients, consent, suppression and service-window expiry. Ask the user to select intended recipients; do not infer opt-in or create consent. Use whatsappTemplateList for exact approved names, languages, component requirements and freshness. Outside a current service window, use an eligible approved template. Use whatsappMediaList for owned ready, unexpired providerMediaIds already uploaded for this account. Device/chat uploads and fresh generated assets go through the signed-in Influence upload workflow before they can appear here; never substitute a file assetId for a native providerMediaId. Follow each tool's cursor/done with the same account; an empty page is not complete unless done is true.
+
+Save these explicit selections as whatsAppTargets through campaignDraftSave, with targets: [] for a WhatsApp-only composition. Each target has a caller-created stable publicId, the returned accountPublicId, exact contactPublicIds, native message and optional replyTo. Omit whatsAppTargets to preserve them on an edit; supplying the array replaces the complete messaging selection, and [] removes it. Native text, templates, owned image/video and other supported message controls retain their structured fields. IQ planning accepts the same explicitly selected targets and can rewrite text or template text parameters; it cannot choose recipients, manufacture consent, change native identities or publish.
+
+Use the shared campaignReview and campaignReviewExecute flow. Show the server-derived business account, every recipient, exact native message, reply context and time. Any visual message requires signed-in visual review. Read campaignGet for per-recipient receipts and native batch summaries, or insightsPostList for paginated account delivery receipts. Queued, sending, accepted, delivered and read are different outcomes. Preserve failed, suppressed, canceled and needs_review; a receipt is not a social publication URL or an instruction to resend.
+
 ## Brand context and AI content
 
 Use brandContextGet for saved confirmed company facts and separately authored guidance. Missing context is not a researched fact. This read does not run website research or change guidelines.
@@ -52,13 +62,18 @@ An account's optional lastCheck records a successful bounded collection: fetched
 
 insightsRefresh prepares/confirms a bounded read-only provider feed refresh into that account's owned cache. It queues background work; queued does not mean refreshed. Follow up through insightsAccountList/insightsPostList. Refresh cannot publish or change an account; Slack uses the channel already selected in Influence. Respect rate_limited/unavailable/permission_required results; reconnect providers through Influence when required.
 
+WhatsApp items in insightsAccountList carry native messaging snapshots: phone-filtered incoming/outgoing counts, pricing with its observed currency, complete UTC periods, quality and health. Preserve each section's status and missing values. insightsPostList with the WhatsApp connectionPublicId returns native recipient delivery receipts, not social post metrics. Use whatsappTemplateList for separate WABA-scoped template reporting. insightsRefresh accepts that connectionPublicId and optional templatePublicId to queue the existing native reporting refresh. It never enables template analytics or link tracking; that separate irreversible opt-in stays in signed-in Influence.
+
 ## Boundaries
 
-Publishing supports one composition and one static image per destination on the accounts marked eligible. Native AI plans can contain multiple proposed posts, but each publication has its own draft and exact review. Video, galleries, threads, follow-up comments, recurring publishing, account connection and editing/deleting published network content remain outside the assistant publishing workflow. Writes use existing jobs; bounded Insights reads use the existing provider-read owner. An unavailable feature returns its actual refusal; preserve the draft. Legacy scheduling and generation names are not bypasses.
+Social publishing supports one composition and one static image per destination on the accounts marked eligible. WhatsApp uses its separate native message contract and explicit recipient selections above. Native AI plans can contain multiple proposed posts, but each publication has its own draft and exact review. Social video, galleries, threads, follow-up comments, recurring publishing, account connection and editing/deleting published network content remain outside the assistant publishing workflow. Writes use existing jobs; bounded Insights reads use the existing provider-read owner. An unavailable feature returns its actual refusal; preserve the draft. Legacy scheduling and generation names are not bypasses.
 
 ## Tool inventory
 
 - accountList
+- whatsappContactList
+- whatsappTemplateList
+- whatsappMediaList
 - campaignGet
 - campaignList
 - campaignDraftSave
