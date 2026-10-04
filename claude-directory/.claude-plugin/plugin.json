@@ -2,7 +2,7 @@
   "name": "influence",
   "displayName": "Influence",
   "version": "0.1.0",
-  "description": "Draft, review and schedule social posts through your Influence workspace.",
+  "description": "Draft, review and schedule social posts with saved images, brand guidance and Insights.",
   "author": {
     "name": "Influence",
     "email": "hello@influence.so",
@@ -11,7 +11,12 @@
   "homepage": "https://influence.so",
   "repository": "https://github.com/influence-so/influence-mcp",
   "license": "MIT-0",
-  "keywords": ["social-media", "publishing", "scheduling", "mcp"],
+  "keywords": [
+    "social-media",
+    "publishing",
+    "scheduling",
+    "mcp"
+  ],
   "icon": "./assets/influence-symbol.svg",
   "documentationUrl": "https://github.com/influence-so/influence-mcp/blob/main/claude-directory/README.md",
   "supportUrl": "https://influence.so/support",
