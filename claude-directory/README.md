@@ -10,8 +10,6 @@ Draft, review and schedule social posts with saved images and videos, brand guid
 2. Name the connector **Influence** and enter `https://influence.so/api/mcp/claude`. Choose **Sign in now** and, under **OAuth client**, **Register automatically**.
 3. Sign in to Influence, review the workspace, permissions and access duration, then complete consent and return to Claude.
 
-The Claude Directory listing is being prepared. Until it is published, use the custom connector above. Once the listing is available, its plugin supplies the workflow instructions and its connector supplies the authorized account access.
-
 On Team and Enterprise plans, an Owner adds the connector for the organization before members connect their own accounts. See [Claude's custom connector setup](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) for current account and administrator requirements.
 
 The remote Streamable HTTP endpoint is `https://influence.so/api/mcp/claude`. The plugin uses OAuth. No API key, environment variable, local server or install script is required. Disconnect or revoke the grant when you no longer want Claude to access your workspace.
@@ -50,7 +48,7 @@ Claude shows the complete server-derived review before asking you to approve pub
 
 Accepted or scheduled work is not proof of publication. Delivery can differ by destination; a result that needs review must be reconciled before another send. Missing Insights remain unavailable or unknown rather than zero. Refreshing Insights reads the provider and updates the owned cache; a queued refresh is not a completed refresh.
 
-Text campaign planning uses Influence IQ credits and requires confirmation before spending them. Saved-media selection does not grant publishing approval. This directory package does not offer image or video generation.
+Text campaign planning uses Influence IQ credits and requires confirmation before spending them. Saved-media selection does not grant publishing approval. Use Influence IQ in signed-in Influence to generate images.
 
 ## Account, pricing and help
 
