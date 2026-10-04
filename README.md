@@ -2,7 +2,7 @@
 
 # Influence
 
-Influence is a social media management tool for planning campaigns, writing posts and scheduling content across your connected accounts. Its hosted MCP server lets compatible AI assistants use your saved brand voice to prepare drafts, schedule approved posts and read saved results in Insights. Review posts and images in Influence before approving publication or a schedule change.
+Influence is a social media management tool for planning campaigns, writing posts and scheduling content across your connected accounts. Its hosted MCP server lets compatible AI assistants use your saved brand voice to prepare drafts, schedule approved posts and read saved results in Insights. Review the exact post and attached media before approving publication or a schedule change.
 
 [Website](https://influence.so) · [How it works](https://influence.so/how-it-works) · [ChatGPT guide](https://influence.so/publish-from-chatgpt) · [Support](https://influence.so/support)
 
@@ -14,7 +14,7 @@ This repository contains customer connection settings and instructions for the h
 | --- | --- |
 | Plan a campaign | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts. |
 | Prepare content | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote. |
-| Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Review image posts in Influence. |
+| Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Attach saved images and videos in the right order, then review them in Influence. |
 | Follow delivery | Check each destination's publishing status and the verified post link when available. |
 | Read Insights | Read available connected-account and post metrics, and refresh supported reporting. |
 
@@ -24,6 +24,11 @@ Try asking your connected assistant:
 - “Prepare a draft for LinkedIn and Instagram, then show me the review.”
 - “Show the status and published links for that campaign.”
 - “Summarize the available Insights for our connected accounts.”
+
+Use images and videos from your Influence media library for galleries, Stories,
+Reels and other formats supported by the selected account. Upload new files in
+Influence. TikTok inbox uploads finish in TikTok; Direct posts finish their
+posting choices in Influence.
 
 ## Workflow in Influence
 
@@ -77,7 +82,7 @@ For OpenClaw, follow its [MCP connection guide](https://docs.openclaw.ai/tools/m
 
 ## Use and approval
 
-Read the [customer skill](skills/influence/SKILL.md) for the complete workflow. Display the exact review and wait for a fresh approval before publishing or changing a schedule. Image posts require signed-in visual review in Influence. Scheduled or accepted work is not a published post; preserve the same request ID after an uncertain result.
+Read the [customer skill](skills/influence/SKILL.md) for the complete workflow. Display the exact review and wait for a fresh approval before publishing or changing a schedule. Review attached images and videos before approving the post. Scheduled or accepted work is not a published post; preserve the same request ID after an uncertain result.
 
 IQ planning and image generation spend credits only through their explicitly confirmed service actions. A quote or queued job is not completed content.
 
