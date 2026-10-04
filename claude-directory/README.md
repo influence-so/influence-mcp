@@ -12,17 +12,19 @@ Draft, review and schedule social posts with saved images and videos, brand guid
 
 On Team and Enterprise plans, an Owner adds the connector for the organization before members connect their own accounts. See [Claude's custom connector setup](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) for current account and administrator requirements.
 
-The remote Streamable HTTP endpoint is `https://influence.so/api/mcp/claude`. The plugin uses OAuth. No API key, environment variable, local server or install script is required. Disconnect or revoke the grant when you no longer want Claude to access your workspace.
+The remote Streamable HTTP endpoint is `https://influence.so/api/mcp/claude`. The web and desktop connector uses OAuth. No API key, environment variable, local server or install script is required for that connection. Disconnect or revoke the grant when you no longer want Claude to access your workspace.
 
 ### Cowork and Claude Code
 
 Use the connector from the same Claude account in Cowork. Claude Code can also use account connectors when signed in with that Claude subscription; use `/mcp` to inspect the connection. This account reuse is unavailable when Claude Code uses an API key, Bedrock or Vertex AI credentials instead.
 
-If you need to configure the remote connector directly in Claude Code, use its native HTTP setup and complete the OAuth sign-in shown by `/mcp`:
+For a direct Claude Code connection, open **Influence Settings → Connect your assistant → Claude**. Create a Claude Code key and set `INFLUENCE_MCP_TOKEN` in the environment that launches Claude Code. Then run:
 
 ```sh
-claude mcp add --transport http influence https://influence.so/api/mcp/claude
+claude mcp add --transport http --scope user influence https://influence.so/api/mcp/claude --header 'Authorization: Bearer ${INFLUENCE_MCP_TOKEN}'
 ```
+
+Reopen Claude Code with the key available, then check the Influence connection and tools in `/mcp`. Keep the key out of prompts and source files.
 
 See [Claude Code's MCP documentation](https://code.claude.com/docs/en/mcp). The separate [community marketplace package](../README.md#claude-code) uses the full Influence endpoint and a scoped API key; its installation is a different connection path.
 
