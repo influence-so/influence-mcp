@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "influence": {
+      "type": "http",
+      "url": "https://influence.so/api/mcp/claude"
+    }
+  }
+}
