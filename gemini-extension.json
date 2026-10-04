@@ -1,0 +1,22 @@
+{
+  "description": "Draft, review and schedule social posts through your Influence workspace.",
+  "mcpServers": {
+    "influence": {
+      "type": "http",
+      "url": "https://influence.so/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${INFLUENCE_MCP_TOKEN}"
+      }
+    }
+  },
+  "name": "influence",
+  "settings": [
+    {
+      "description": "Create an expiring scoped key in Influence Settings → Developer, with only the permissions needed for your workflow.",
+      "envVar": "INFLUENCE_MCP_TOKEN",
+      "name": "Influence API key",
+      "sensitive": true
+    }
+  ],
+  "version": "0.1.1"
+}

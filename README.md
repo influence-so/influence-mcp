@@ -10,13 +10,13 @@ This repository contains customer connection settings and instructions for the h
 
 ## What you can do
 
-| Work | How Influence helps |
-| --- | --- |
-| Plan a campaign | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts. |
-| Prepare content | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote. |
+| Work                | How Influence helps                                                                                                                                                                   |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Plan a campaign     | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts.                                                                                      |
+| Prepare content     | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote.                                                             |
 | Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Attach saved images and videos in the right order, then review them in Influence. |
-| Follow delivery | Check each destination's publishing status and the verified post link when available. |
-| Read Insights | Read available connected-account and post metrics, and refresh supported reporting. |
+| Follow delivery     | Check each destination's publishing status and the verified post link when available.                                                                                                 |
+| Read Insights       | Read available connected-account and post metrics, and refresh supported reporting.                                                                                                   |
 
 Try asking your connected assistant:
 
@@ -46,12 +46,12 @@ Both images show an example workspace in the current Influence UI.
 
 Influence brings your channels into one workspace:
 
-| Channels | Connections |
-| --- | --- |
-| Social and video | X, LinkedIn profiles and Pages, Instagram, Facebook, Threads, YouTube, TikTok, Pinterest and Twitch |
-| Communities and messaging | Discord, Slack, Telegram and WhatsApp Business |
-| Open networks | Mastodon, Bluesky, Nostr and Pixelfed |
-| Blogs and email | DEV.to, Hashnode, WordPress, listmonk and Tumblr |
+| Channels                  | Connections                                                                                         |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| Social and video          | X, LinkedIn profiles and Pages, Instagram, Facebook, Threads, YouTube, TikTok, Pinterest and Twitch |
+| Communities and messaging | Discord, Slack, Telegram and WhatsApp Business                                                      |
+| Open networks             | Mastodon, Bluesky, Nostr and Pixelfed                                                               |
+| Blogs and email           | DEV.to, Hashnode, WordPress, listmonk and Tumblr                                                    |
 
 Choose your connected accounts when preparing a draft. Account permissions, content formats and available Insights follow each channel's supported features.
 
@@ -73,6 +73,16 @@ Add this marketplace and install its plugin:
 ```
 
 Start Claude Code with `INFLUENCE_MCP_TOKEN` available, then use `/mcp` to inspect the connection. This package has no local server, install script or hook. See [Claude Code MCP setup](https://code.claude.com/docs/en/mcp).
+
+## Gemini CLI
+
+Install the extension:
+
+```text
+gemini extensions install https://github.com/influence-so/influence-mcp
+```
+
+When prompted, enter your scoped Influence API key. Gemini stores this sensitive setting in your system keychain and uses it for the hosted MCP connection. The extension includes the same Influence customer skill and review workflow. See [Gemini CLI extensions](https://geminicli.com/docs/extensions/reference/).
 
 ## Other assistants
 
