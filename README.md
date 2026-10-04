@@ -55,6 +55,12 @@ Influence brings your channels into one workspace:
 
 Choose your connected accounts when preparing a draft. Account permissions, content formats and available Insights follow each channel's supported features.
 
+## Claude
+
+Use [Connect to Claude](https://influence.so/claude) for the primary OAuth connection. No API key is needed. Follow the [Cowork guide](https://influence.so/claude-cowork) or [Claude Code guide](https://influence.so/claude-code) to use the same Claude-account connection where available.
+
+The Claude Code marketplace plugin below uses the full Influence endpoint and a scoped API key. Choose it when you need the additional tools.
+
 ## Connection
 
 The Streamable HTTP endpoint is `https://influence.so/api/mcp`. An Influence account and authorized workspace are required. Available tools depend on your permissions, connected accounts and enabled features.

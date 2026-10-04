@@ -10,7 +10,9 @@
       "name": "influence",
       "source": "./",
       "description": "Draft, review and schedule social posts through your Influence workspace.",
-      "version": "0.1.1"
+      "displayName": "Influence",
+      "category": "marketing",
+      "tags": ["social-media", "content-planning", "scheduling", "analytics"]
     }
   ]
 }
