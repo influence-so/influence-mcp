@@ -10,7 +10,7 @@
       "name": "influence",
       "source": "./",
       "description": "Draft, review and schedule social posts through your Influence workspace.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }

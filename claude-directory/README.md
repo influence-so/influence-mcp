@@ -2,7 +2,7 @@
 
 # Influence
 
-Draft, review and schedule social posts with saved images, brand guidance and available Insights. Revise posts for your connected accounts and review the exact content before approving publication or a schedule change. Check each destination's delivery status and verified published link.
+Draft, review and schedule social posts with saved images and videos, brand guidance and available Insights. Revise posts for your connected accounts and review the exact content before approving publication or a schedule change. Check each destination's delivery status and verified published link.
 
 ## Connect
 
@@ -30,9 +30,9 @@ See [Claude Code's MCP documentation](https://code.claude.com/docs/en/mcp). The 
 
 ## Try it
 
-- “Show my connected accounts and which can publish text or an image.”
+- “Show my connected accounts and their supported post formats.”
 - “Prepare an editable draft for the accounts I select, using my saved brand guidance.”
-- “Find a saved image for this post and show me the review.”
+- “Find saved images and videos for this post and show me the review.”
 - “Move this scheduled post to tomorrow at 10:00 in Asia/Bangkok, then show me the change for approval.”
 - “Show the publishing status and available Insights for my connected accounts.”
 
@@ -40,13 +40,17 @@ This plugin provides the core draft, review, saved-media, brand, Insights and te
 
 Features follow your granted permissions, connected accounts and their supported formats. Connect accounts and upload new media in Influence. A device or chat attachment is not automatically uploaded by this plugin.
 
+Use images and videos from your Influence media library for galleries, Stories,
+Reels and other formats supported by the selected account. TikTok inbox uploads
+finish in TikTok; Direct posts finish their posting choices in Influence.
+
 ## Review and approval
 
-Claude shows the complete server-derived review before asking you to approve publication or a schedule change. Review text, destination accounts, settings and time before giving a fresh approval. Image posts require signed-in visual review in Influence. Editing any reviewed field requires a new review and approval.
+Claude shows the complete server-derived review before asking you to approve publication or a schedule change. Review text, destination accounts, settings and time before giving a fresh approval. Images and videos require signed-in visual review in Influence. Editing any reviewed field requires a new review and approval.
 
 Accepted or scheduled work is not proof of publication. Delivery can differ by destination; a result that needs review must be reconciled before another send. Missing Insights remain unavailable or unknown rather than zero. Refreshing Insights reads the provider and updates the owned cache; a queued refresh is not a completed refresh.
 
-Text campaign planning uses Influence IQ credits and requires confirmation before spending them. Saved-image selection does not grant publishing approval. This directory package does not offer image or video generation.
+Text campaign planning uses Influence IQ credits and requires confirmation before spending them. Saved-media selection does not grant publishing approval. This directory package does not offer image or video generation.
 
 ## Account, pricing and help
 
