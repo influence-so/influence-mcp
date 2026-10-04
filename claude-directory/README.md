@@ -6,13 +6,27 @@ Draft, review and schedule social posts with saved images, brand guidance and av
 
 ## Connect
 
-1. Add the Influence plugin in Claude, then open its **Connectors** tab.
-2. Add or connect the Influence connector and sign in to Influence through the OAuth window.
-3. Choose the workspace and permissions you want to grant. Return to Claude after completing consent.
+1. In Claude on the web or desktop, open **Customize → Connectors → Add → Custom → Web**.
+2. Name the connector **Influence** and enter `https://influence.so/api/mcp/claude`. Choose **Sign in now** and, under **OAuth client**, **Register automatically**.
+3. Sign in to Influence, review the workspace, permissions and access duration, then complete consent and return to Claude.
 
-On Team and Enterprise plans, an Owner adds the connector for the organization before members connect their own accounts. Adding the plugin loads its instructions; account access begins only after you connect and authorize Influence.
+The Claude Directory listing is being prepared. Until it is published, use the custom connector above. Once the listing is available, its plugin supplies the workflow instructions and its connector supplies the authorized account access.
+
+On Team and Enterprise plans, an Owner adds the connector for the organization before members connect their own accounts. See [Claude's custom connector setup](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) for current account and administrator requirements.
 
 The remote Streamable HTTP endpoint is `https://influence.so/api/mcp/claude`. The plugin uses OAuth. No API key, environment variable, local server or install script is required. Disconnect or revoke the grant when you no longer want Claude to access your workspace.
+
+### Cowork and Claude Code
+
+Use the connector from the same Claude account in Cowork. Claude Code can also use account connectors when signed in with that Claude subscription; use `/mcp` to inspect the connection. This account reuse is unavailable when Claude Code uses an API key, Bedrock or Vertex AI credentials instead.
+
+If you need to configure the remote connector directly in Claude Code, use its native HTTP setup and complete the OAuth sign-in shown by `/mcp`:
+
+```sh
+claude mcp add --transport http influence https://influence.so/api/mcp/claude
+```
+
+See [Claude Code's MCP documentation](https://code.claude.com/docs/en/mcp). The separate [community marketplace package](../README.md#claude-code) uses the full Influence endpoint and a scoped API key; its installation is a different connection path.
 
 ## Try it
 
