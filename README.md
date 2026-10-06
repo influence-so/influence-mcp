@@ -90,6 +90,47 @@ gemini extensions install https://github.com/influence-so/influence-mcp
 
 When prompted, enter your scoped Influence API key. Gemini stores this sensitive setting in your system keychain and uses it for the hosted MCP connection. The extension includes the same Influence customer skill and review workflow. See [Gemini CLI extensions](https://geminicli.com/docs/extensions/reference/).
 
+This extension connects Gemini CLI. Gemini web and Google Workspace have separate integration options. For manual configuration, use the [Influence Gemini guide](https://influence.so/gemini).
+
+## Kimi Code
+
+Start Kimi Code with `INFLUENCE_MCP_TOKEN` available from your local secret manager, then install the plugin:
+
+```text
+/plugins install https://github.com/influence-so/influence-mcp/tree/main
+/reload
+```
+
+The native `kimi.plugin.json` loads the same Influence skill and connects the hosted HTTP MCP server using `bearerTokenEnvVar`. Use `/mcp` to check that Influence tools are available. No local server or hook is installed. See [Kimi Code plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html) and the [Influence Kimi guide](https://influence.so/kimi).
+
+This package targets Kimi Code. Kimi Work and Kimi Web have their own plugin installation and availability rules; installing this Code plugin does not install it in those products.
+
+## DeepSeek Harness
+
+DeepSeek Harness has a native Streamable HTTP MCP client. Add the following entry to `~/.dsh/cordis.patch.yml`, preserving any existing patch entries. Replace an existing `mcp-influence` entry rather than adding it twice:
+
+```yaml
+- insert:
+    - id: mcp-influence
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: influence
+        transport: streamable-http
+        url: https://influence.so/api/mcp
+        headers:
+          Authorization: !!js '`Bearer ${process.env.INFLUENCE_MCP_TOKEN}`'
+```
+
+Start the Harness with `INFLUENCE_MCP_TOKEN` available from your local secret manager. Save the [customer skill](skills/influence/SKILL.md) as `~/.dsh/skills/influence/SKILL.md`, restart the Harness, and check that Influence tools are available before starting a conversation. This uses the native MCP client and skill loader, with no wrapper server. See [DeepSeek native MCP setup](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md) and the [Influence DeepSeek guide](https://influence.so/deepseek).
+
+This setup connects DeepSeek Harness. The model API and regular DeepSeek chat app are separate products; this configuration does not add tools to them.
+
+## Manus
+
+If available to your account, open Manus **Settings → Integrations → Custom MCP Servers → Add Server**. Name the server **Influence**, set its URL to `https://influence.so/api/mcp`, and choose **Bearer token** authentication. Enter your expiring scoped Influence key only in the protected credential field. If protected entry is unavailable, pause setup.
+
+Use **Test Connection** and check that Influence tools appear before starting a conversation. This uses Manus’s native remote MCP client and does not require a local server or a separate plugin manifest. See [Manus Custom MCP Servers](https://manus.im/docs/integrations/custom-mcp) and the [Influence Manus guide](https://influence.so/manus). Downloading the customer skill alone does not establish a connection.
+
 ## Other assistants
 
 The `skills/influence/` directory contains the customer skill in standard `SKILL.md` format. Installing a skill provides instructions; it does not connect a server or issue credentials. Configure your assistant's supported remote MCP client separately with the endpoint and scoped bearer key.
