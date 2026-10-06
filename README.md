@@ -65,7 +65,7 @@ The Claude Code marketplace plugin below uses the full Influence endpoint and a 
 
 The Streamable HTTP endpoint is `https://influence.so/api/mcp`. An Influence account and authorized workspace are required. Available tools depend on your permissions, connected accounts and enabled features.
 
-Create a scoped API key in [Influence Settings → Developer](https://influence.so/app/settings/account#settings-developer). Choose only the permissions you need and set an expiry. Save the shown-once key in your local secret store as `INFLUENCE_MCP_TOKEN`, available to the process that starts your assistant. Never commit the key, paste it into chat or place it in a URL. Revoke it in Influence when no longer needed.
+Create a scoped API key in [Influence Settings → Developer](https://influence.so/sign-in?next=%2Fapp%2Fsettings%2Faccount%23settings-developer). Choose only the permissions you need and set an expiry. Save the shown-once key in your local secret store as `INFLUENCE_MCP_TOKEN`, available to the process that starts your assistant. Never commit the key, paste it into chat or place it in a URL. Revoke it in Influence when no longer needed.
 
 The included `.mcp.json` reads the bearer key from that environment variable. No key is included in this repository. ChatGPT web and Claude web can use the existing Influence OAuth connection; this package uses a scoped key and does not add an OAuth callback.
 
@@ -82,17 +82,21 @@ Start Claude Code with `INFLUENCE_MCP_TOKEN` available, then use `/mcp` to inspe
 
 ## Gemini CLI
 
+Before your first Influence request, set up [Gemini CLI model access](https://geminicli.com/docs/get-started/authentication/) with a Gemini API key or supported enterprise authentication. Your Influence key only connects Influence.
+
 Install the extension:
 
 ```text
 gemini extensions install https://github.com/influence-so/influence-mcp
 ```
 
-When prompted, enter your scoped Influence API key. Gemini stores this sensitive setting in your system keychain and uses it for the hosted MCP connection. The extension includes the same Influence customer skill and review workflow. See [Gemini CLI extensions](https://geminicli.com/docs/extensions/reference/).
+When prompted, enter your scoped Influence API key. Gemini stores it as a sensitive extension setting and uses it for the hosted MCP connection. The extension includes the same Influence customer skill and review workflow. See [Gemini CLI extensions](https://geminicli.com/docs/extensions/reference/).
 
 This extension connects Gemini CLI. Gemini web and Google Workspace have separate integration options. For manual configuration, use the [Influence Gemini guide](https://influence.so/gemini).
 
 ## Kimi Code
+
+Check your [Kimi Code model access](https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/providers.html): you need eligible Kimi access with available quota, or your own model-provider credentials. Your Influence key only connects Influence.
 
 Start Kimi Code with `INFLUENCE_MCP_TOKEN` available from your local secret manager, then install the plugin:
 
@@ -148,9 +152,15 @@ This setup connects DeepSeek Harness. The model API and regular DeepSeek chat ap
 
 ## Manus
 
-If available to your account, open Manus **Settings → Integrations → Custom MCP Servers → Add Server**. Name the server **Influence**, set its URL to `https://influence.so/api/mcp`, and choose **Bearer token** authentication. Enter your expiring scoped Influence key only in the protected credential field. If protected entry is unavailable, pause setup.
+Open [Influence Settings → Manus](https://influence.so/sign-in?next=%2Fapp%2Fsettings%2Faccount%23settings-developer-manus) to create an expiring scoped key and copy the credential-free MCP configuration. In Manus, open **+ Add connectors → Create → Import MCP by JSON** and paste that configuration. Keep the connector private.
 
-Use **Test Connection** and check that Influence tools appear before starting a conversation. This uses Manus’s native remote MCP client and does not require a local server or a separate plugin manifest. See [Manus Custom MCP Servers](https://manus.im/docs/integrations/custom-mcp) and the [Influence Manus guide](https://influence.so/manus). Downloading the customer skill alone does not establish a connection.
+Open **Manage → Edit configuration → Custom headers → Add custom header**. Set the header name to `Authorization` and its value to `Bearer` followed by one space and your scoped key. This field displays the key. Keep it out of chat and shared exports, and do not choose **Publish to Projects**.
+
+Choose **Try it out** and ask Influence to list your connected accounts and summarize your saved Brand Guidelines without creating, publishing or scheduling anything. Check those results before creating a draft. Review and approve the exact post while signed in to Influence.
+
+Download the [Influence skill ZIP](https://influence.so/downloads/influence-skill.zip). In Manus, open **Skills → Create → Add from local files** and upload it. The archive contains `SKILL.md` at its root. The skill adds workflow instructions; the MCP connection must be configured separately.
+
+This uses Manus’s native remote MCP client and does not require a local server or a separate plugin manifest. See the [Influence Manus guide](https://influence.so/manus) for the setup flow and [Manus Custom MCP Servers](https://manus.im/docs/integrations/custom-mcp) for provider help.
 
 ## Other assistants
 
