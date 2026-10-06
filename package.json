@@ -1,0 +1,19 @@
+{
+  "description": "Draft, review and schedule social posts through your Influence workspace.",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "cordis.patch.yml",
+    "skills/"
+  ],
+  "name": "influence",
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-skill-filesystem": "0.2.0-rc.2"
+  },
+  "private": true,
+  "version": "0.1.3"
+}
