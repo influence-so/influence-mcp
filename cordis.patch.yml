@@ -1,0 +1,16 @@
+- insert:
+    - id: mcp-influence
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: influence
+        transport: streamable-http
+        url: "https://influence.so/api/mcp"
+        headers:
+          Authorization: !!js '`Bearer ${process.env.INFLUENCE_MCP_TOKEN}`'
+    - id: skill-influence
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      inject: [profileContext]
+      config:
+        providerName: influence
+        includeDefaultRoots: false
+        bundledSkillDir: !!js "ctx.profileContext.dir + '/node_modules/influence/skills'"

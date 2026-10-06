@@ -98,8 +98,9 @@ Start Kimi Code with `INFLUENCE_MCP_TOKEN` available from your local secret mana
 
 ```text
 /plugins install https://github.com/influence-so/influence-mcp/tree/main
-/reload
 ```
+
+After installation finishes, enter `/reload` as a separate command.
 
 The native `kimi.plugin.json` loads the same Influence skill and connects the hosted HTTP MCP server using `bearerTokenEnvVar`. Use `/mcp` to check that Influence tools are available. No local server or hook is installed. See [Kimi Code plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html) and the [Influence Kimi guide](https://influence.so/kimi).
 
@@ -107,21 +108,41 @@ This package targets Kimi Code. Kimi Work and Kimi Web have their own plugin ins
 
 ## DeepSeek Harness
 
-DeepSeek Harness has a native Streamable HTTP MCP client. Add the following entry to `~/.dsh/cordis.patch.yml`, preserving any existing patch entries. Replace an existing `mcp-influence` entry rather than adding it twice:
+With DeepSeek Harness **0.2.0-rc.2** and pnpm installed, add the native Influence bundle to the web profile. If you already use manual setup, remove only its `mcp-influence` entry from `~/.dsh/cordis.patch.yml` or `~/.dsh/profiles/web/cordis.patch.yml` before installing; keep your other settings:
+
+```text
+dsh plugin --profile web add github:influence-so/influence-mcp
+```
+
+Start the Harness with `INFLUENCE_MCP_TOKEN` available from your local secret manager:
+
+```text
+dsh web
+```
+
+The config-only bundle connects to `https://influence.so/api/mcp` using the native Streamable HTTP client and includes the canonical Influence skill. It has no runtime dependencies, install script or wrapper server. Harness model access is configured separately. If you use another existing profile, use that profile for both installation and startup.
+
+For a different Influence address, use standalone manual setup instead of the bundle. If you already installed the bundle in the web profile, remove it first with `dsh plugin --profile web remove influence`. Add the following entry to `~/.dsh/profiles/web/cordis.patch.yml` and change its URL. If an Influence entry exists in the home-level `~/.dsh/cordis.patch.yml`, move only that entry into the profile patch. Preserve your other settings and replace an existing `mcp-influence` entry rather than adding it twice. If you set `DSH_HOME`, use that home instead of `~/.dsh`; for another profile, replace `web` with that profile in the path:
 
 ```yaml
 - insert:
     - id: mcp-influence
-      name: '@deepseek-ai/dsh-mcp-client'
+      name: "@deepseek-ai/dsh-mcp-client"
       config:
         serverName: influence
         transport: streamable-http
         url: https://influence.so/api/mcp
         headers:
-          Authorization: !!js '`Bearer ${process.env.INFLUENCE_MCP_TOKEN}`'
+          Authorization: !!js "`Bearer ${process.env.INFLUENCE_MCP_TOKEN}`"
 ```
 
-Start the Harness with `INFLUENCE_MCP_TOKEN` available from your local secret manager. Save the [customer skill](skills/influence/SKILL.md) as `~/.dsh/skills/influence/SKILL.md`, restart the Harness, and check that Influence tools are available before starting a conversation. This uses the native MCP client and skill loader, with no wrapper server. See [DeepSeek native MCP setup](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md) and the [Influence DeepSeek guide](https://influence.so/deepseek).
+For manual setup, save the [customer skill](skills/influence/SKILL.md) as `~/.dsh/skills/influence/SKILL.md`; the native bundle already includes it. Restart the Harness and check that Influence tools are available before starting a conversation. To remove the native bundle, run:
+
+```text
+dsh plugin --profile web remove influence
+```
+
+See [DeepSeek native bundles](https://deepseek-harness.github.io/deepseek-harness/en/develop/basic/publish), [native MCP setup](https://github.com/deepseek-ai/deepseek-harness/blob/dsh-v0.2.0-rc.2/packages/mcp/mcp-client/README.md) and the [Influence DeepSeek guide](https://influence.so/deepseek).
 
 This setup connects DeepSeek Harness. The model API and regular DeepSeek chat app are separate products; this configuration does not add tools to them.
 
