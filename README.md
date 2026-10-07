@@ -171,7 +171,9 @@ Start the Harness with `INFLUENCE_MCP_TOKEN` available from your local secret ma
 dsh web
 ```
 
-The config-only bundle connects to `https://influence.so/api/mcp` using the native Streamable HTTP client and includes the canonical Influence skill. It has no runtime dependencies, install script or wrapper server. Harness model access is configured separately. If you use another existing profile, use that profile for both installation and startup.
+In Web Harness, open **Settings → Models**, add your DeepSeek Platform API key and select **Apply**, then choose a model in your conversation. The API account needs available credit. DeepSeek Chat sign-in does not configure Web Harness, and the model key is separate from `INFLUENCE_MCP_TOKEN`. See [Harness model access](https://github.com/deepseek-ai/deepseek-harness/blob/dsh-v0.2.0-rc.2/docs/user/guide/providers.md).
+
+The config-only bundle connects to `https://influence.so/api/mcp` using the native Streamable HTTP client and includes the canonical Influence skill. It has no runtime dependencies, install script or wrapper server. If you use another existing profile, use that profile for both installation and startup.
 
 For a different Influence address, use standalone manual setup instead of the bundle. If you already installed the bundle in the web profile, remove it first with `dsh plugin --profile web remove influence`. Add the following entry to `~/.dsh/profiles/web/cordis.patch.yml` and change its URL. If an Influence entry exists in the home-level `~/.dsh/cordis.patch.yml`, move only that entry into the profile patch. Preserve your other settings and replace an existing `mcp-influence` entry rather than adding it twice. If you set `DSH_HOME`, use that home instead of `~/.dsh`; for another profile, replace `web` with that profile in the path:
 
