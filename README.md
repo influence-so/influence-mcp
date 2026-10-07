@@ -92,6 +92,29 @@ gemini extensions install https://github.com/influence-so/influence-mcp
 
 When prompted, enter your scoped Influence API key. Gemini stores it as a sensitive extension setting and uses it for the hosted MCP connection. The extension includes the same Influence customer skill and review workflow. See [Gemini CLI extensions](https://geminicli.com/docs/extensions/reference/).
 
+If Influence is already installed but `/influence` is missing, update the
+extension once:
+
+```text
+gemini extensions update influence
+```
+
+Restart Gemini CLI after installing or updating. In later conversations, use
+`/influence` to check your connected accounts, or `/influence` followed by your
+request. This native command activates the included skill; it does not grant
+publishing approval. See [custom commands](https://geminicli.com/docs/cli/custom-commands/).
+
+If your Influence key expires or is revoked, create a replacement in Influence
+Settings and run:
+
+```text
+gemini extensions config influence
+```
+
+Confirm replacing the saved setting and enter the new key only in Gemini's
+protected terminal prompt, then restart Gemini CLI. Keep the extension installed;
+the key does not go in the command, chat or extension files.
+
 This extension connects Gemini CLI. Gemini web and Google Workspace have separate integration options. For manual configuration, use the [Influence Gemini guide](https://influence.so/gemini).
 
 ## Kimi Work
@@ -110,7 +133,10 @@ result before creating a draft. Review and approve an exact post in signed-in
 Influence before publishing.
 
 The `kimi-work/` plugin uses Kimi's native OAuth connection and the same Influence
-customer skill. No API key goes in chat, plugin files or a model prompt. Work
+customer skill. In later K3 tasks, select the installed Influence plugin from
+Plugins; no import is needed for each task. Reconnect only when Kimi requests it
+or your Influence connection has expired or been revoked. No API key goes in
+chat, plugin files or a model prompt. Work
 availability depends on your account and region; this setup does not connect
 Kimi web, Claw or ordinary Plus chats. See the [Influence Kimi guide](https://influence.so/kimi).
 
@@ -126,7 +152,7 @@ Start Kimi Code with `INFLUENCE_MCP_TOKEN` available from your local secret mana
 
 After installation finishes, enter `/reload` as a separate command.
 
-The native `kimi.plugin.json` loads the same Influence skill and connects the hosted HTTP MCP server using `bearerTokenEnvVar`. Use `/mcp` to check that Influence tools are available. No local server or hook is installed. See [Kimi Code plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html) and the [Influence Kimi guide](https://influence.so/kimi).
+The native `kimi.plugin.json` loads the same Influence skill and connects the hosted HTTP MCP server using `bearerTokenEnvVar`. Use `/mcp` to check that Influence tools are available. The skill loads when a session starts or resumes; use `/skill:influence` to select it explicitly in a later conversation. Keep the key available when starting Code and replace it when it expires or is revoked. No local server or hook is installed. See [Kimi Code plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html) and the [Influence Kimi guide](https://influence.so/kimi).
 
 The root plugin targets Kimi Code. Installing it does not install the separate
 Work plugin or connect Kimi web.
@@ -179,15 +205,46 @@ Open **Manage → Edit configuration → Custom headers → Add custom header**.
 
 Choose **Try it out** and ask Influence to list your connected accounts and summarize your saved Brand Guidelines without creating, publishing or scheduling anything. Check those results before creating a draft. Review and approve the exact post while signed in to Influence.
 
-Download the [Influence skill ZIP](https://influence.so/downloads/influence-skill.zip). In Manus, open **Skills → Create → Add from local files** and upload it. The archive contains `SKILL.md` at its root. The skill adds workflow instructions; the MCP connection must be configured separately.
+Download the [Influence skill ZIP](https://influence.so/downloads/influence-skill.zip). In Manus, open **Skills** and choose the option to upload a skill. The archive contains `SKILL.md` at its root. In later tasks, type `/` and select Influence from your installed skills. For a project, select it in that project's skill library too. Keep the private MCP connector configured and replace its key when it expires or is revoked. The skill adds workflow instructions; the MCP connection must be configured separately. See [Manus skill installation and use](https://help.manus.im/en/articles/14753565-how-to-share-and-use-skills-in-manus).
 
 This uses Manus’s native remote MCP client and does not require a local server or a separate plugin manifest. See the [Influence Manus guide](https://influence.so/manus) for the setup flow and [Manus Custom MCP Servers](https://manus.im/docs/integrations/custom-mcp) for provider help.
+
+## OpenClaw
+
+These instructions use OpenClaw **2026.9.8** and a
+[supported Node.js version](https://docs.openclaw.ai/install).
+Keep your scoped key in your private `~/.openclaw/.env` file as
+`INFLUENCE_MCP_TOKEN`, or make it available in the environment that starts
+OpenClaw. Save Influence's native connection before installing the plugin:
+
+```sh
+openclaw mcp set influence '{"url":"https://influence.so/api/mcp","transport":"streamable-http","headers":{"Authorization":"Bearer ${INFLUENCE_MCP_TOKEN}"}}'
+```
+
+This saves the key reference, without connecting. OpenClaw resolves it from your
+private environment and uses this saved definition instead of the plugin's
+connection settings. See [native MCP configuration](https://docs.openclaw.ai/cli/mcp/registry).
+
+Download this repository and install its existing Claude-format bundle:
+
+```sh
+git clone https://github.com/influence-so/influence-mcp influence
+openclaw plugins install ./influence
+```
+
+Review and accept OpenClaw's source and plugin capability prompts, then start or
+restart your Gateway. The native installer includes the Influence skill and
+icon without a local server, hook or wrapper. In later conversations, use
+`/influence` followed by your request. Keep the installation; update your private
+key when it expires or is revoked. Installing the plugin does not approve a
+post. See [plugin bundles](https://docs.openclaw.ai/plugins/bundles) and the
+[Influence OpenClaw guide](https://influence.so/openclaw).
 
 ## Other assistants
 
 The `skills/influence/` directory contains the customer skill in standard `SKILL.md` format. Installing a skill provides instructions; it does not connect a server or issue credentials. Configure your assistant's supported remote MCP client separately with the endpoint and scoped bearer key.
 
-For OpenClaw, follow its [MCP connection guide](https://docs.openclaw.ai/tools/mcp). The same skill can be distributed through [ClawHub](https://docs.openclaw.ai/clawhub/publishing). The native Claude plugin layout is also accepted by the [xAI plugin marketplace](https://github.com/xai-org/plugin-marketplace/blob/main/CONTRIBUTING.md).
+The native Claude plugin layout is also accepted by the [Grok Build plugin marketplace](https://github.com/xai-org/plugin-marketplace/blob/main/CONTRIBUTING.md), subject to its separate publication review.
 
 ## Use and approval
 
@@ -209,4 +266,4 @@ Authorized maintainers can manually run the **Publish to MCP Registry** GitHub w
 
 ## License and branding
 
-The connection configuration, customer skill and documentation are released under [MIT-0](LICENSE). Files under `assets/`, including the Influence logo, are excluded; see [brand use](BRAND-USAGE.md). The license does not cover the hosted application or grant access to customer data or paid service features.
+The connection configuration, customer skill and documentation are released under [MIT-0](LICENSE). Files under `assets/` and `kimi-work/icon.svg`, including the Influence logos, are excluded; see [brand use](BRAND-USAGE.md). The license does not cover the hosted application or grant access to customer data or paid service features.

@@ -1,0 +1,6 @@
+description = "Use Influence for your social media workflow."
+prompt = """
+Activate the influence skill, then help with this request. If no request is supplied, list the connected accounts without creating, publishing or scheduling anything.
+
+{{args}}
+"""

@@ -1,7 +1,8 @@
 {
   "description": "Draft, review and schedule social posts through your Influence workspace.",
   "interface": {
-    "category": "SOCIAL"
+    "category": "SOCIAL",
+    "displayName": "Influence"
   },
   "mcpServers": {
     "influence": {
@@ -13,5 +14,5 @@
     "skill": "influence"
   },
   "skills": "./skills/",
-  "version": "0.1.3"
+  "version": "0.1.4"
 }
