@@ -65,7 +65,7 @@ The Claude Code marketplace plugin below uses the full Influence endpoint and a 
 
 The Streamable HTTP endpoint is `https://influence.so/api/mcp`. An Influence account and authorized workspace are required. Available tools depend on your permissions, connected accounts and enabled features.
 
-For the bearer-key setups below, create a scoped API key in [Influence Settings → Developer](https://influence.so/sign-in?next=%2Fapp%2Fsettings%2Faccount%23settings-developer). Choose only the permissions you need and set an expiry. Save the shown-once key in your local secret store as `INFLUENCE_MCP_TOKEN`, available to the process that starts your assistant. Never commit the key, paste it into chat or place it in a URL. Revoke it in Influence when no longer needed.
+For the bearer-key setups below, create a scoped API key in [Influence Settings → Apps and automations → API keys](https://influence.so/sign-in?next=%2Fapp%2Fsettings%2Faccount%23settings-developer). Choose only the permissions you need and set an expiry. Save the shown-once key in your local secret store as `INFLUENCE_MCP_TOKEN`, available to the process that starts your assistant. Never commit the key, paste it into chat or place it in a URL. Revoke it in Influence when no longer needed.
 
 The root `.mcp.json` reads the bearer key from that environment variable. No key is included in this repository. ChatGPT, Claude and the [Kimi Work plugin](#kimi-work) use Influence sign-in through their native OAuth connection.
 
