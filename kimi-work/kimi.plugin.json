@@ -1,0 +1,17 @@
+{
+  "description": "Draft, review and schedule social posts through your Influence workspace.",
+  "interface": {
+    "category": "SOCIAL"
+  },
+  "mcpServers": {
+    "influence": {
+      "url": "https://influence.so/api/mcp"
+    }
+  },
+  "name": "influence",
+  "sessionStart": {
+    "skill": "influence"
+  },
+  "skills": "./skills/",
+  "version": "0.1.3"
+}

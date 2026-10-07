@@ -94,6 +94,26 @@ When prompted, enter your scoped Influence API key. Gemini stores it as a sensit
 
 This extension connects Gemini CLI. Gemini web and Google Workspace have separate integration options. For manual configuration, use the [Influence Gemini guide](https://influence.so/gemini).
 
+## Kimi Work
+
+Use an account with Kimi Work and K3 access. Select **K3** before starting a new
+task. In **Plugins → Custom Plugin**, open **PluginBuilder** and ask it to import
+the Influence plugin from
+`https://github.com/influence-so/influence-mcp/tree/main/kimi-work`, preserving
+its included skill and connection settings.
+
+In **Personal**, choose **Install**. Kimi opens Influence's sign-in and permission
+review in your browser; select only the permissions your workflow needs. Wait
+until installation completes, then start a new K3 task and ask Influence to list
+your connected accounts without creating or publishing anything. Check the
+result before creating a draft. Review and approve an exact post in signed-in
+Influence before publishing.
+
+The `kimi-work/` plugin uses Kimi's native OAuth connection and the same Influence
+customer skill. No API key goes in chat, plugin files or a model prompt. Work
+availability depends on your account and region; this setup does not connect
+Kimi web, Claw or ordinary Plus chats. See the [Influence Kimi guide](https://influence.so/kimi).
+
 ## Kimi Code
 
 Check your [Kimi Code model access](https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/providers.html): you need eligible Kimi access with available quota, or your own model-provider credentials. Your Influence key only connects Influence.
@@ -108,7 +128,8 @@ After installation finishes, enter `/reload` as a separate command.
 
 The native `kimi.plugin.json` loads the same Influence skill and connects the hosted HTTP MCP server using `bearerTokenEnvVar`. Use `/mcp` to check that Influence tools are available. No local server or hook is installed. See [Kimi Code plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html) and the [Influence Kimi guide](https://influence.so/kimi).
 
-This package targets Kimi Code. Kimi Work and Kimi Web have their own plugin installation and availability rules; installing this Code plugin does not install it in those products.
+The root plugin targets Kimi Code. Installing it does not install the separate
+Work plugin or connect Kimi web.
 
 ## DeepSeek Harness
 
