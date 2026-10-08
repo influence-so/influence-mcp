@@ -15,6 +15,7 @@ This repository contains customer connection settings and instructions for the h
 | Plan a campaign     | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts.                                                                                      |
 | Prepare content     | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote.                                                             |
 | Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Attach saved images and videos in the right order, then review them in Influence. |
+| Schedule a set      | Prepare up to 10 posts and 50 account or recipient deliveries in one batch. Review every exact post before scheduling; image approval stays in Influence.                             |
 | Follow delivery     | Check each destination's publishing status and the verified post link when available.                                                                                                 |
 | Read Insights       | Read available connected-account and post metrics, and refresh supported reporting.                                                                                                   |
 
@@ -26,9 +27,17 @@ Try asking your connected assistant:
 - “Summarize the available Insights for our connected accounts.”
 
 Use images and videos from your Influence media library for galleries, Stories,
-Reels and other formats supported by the selected account. Upload new files in
-Influence. TikTok inbox uploads finish in TikTok; Direct posts finish their
+Reels and other formats supported by the selected account. The full connection
+can import supported images when the assistant can supply the file and has media
+write access; other files use Influence upload. Importing an image does not
+approve publication. TikTok inbox uploads finish in TikTok; Direct posts finish their
 posting choices in Influence.
+
+For bulk scheduling, the assistant can read your calendar and prepare a set of
+posts with individual reviews. Calendar reads do not reserve times or enforce
+spacing, and bulk scheduling does not change the web-app experience. Tools and
+file transfer depend on the installed client's support; a package update alone
+does not verify that a client has loaded the new tools.
 
 ## Workflow in Influence
 
