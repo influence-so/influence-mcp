@@ -10,14 +10,14 @@ This repository contains customer connection settings and instructions for the h
 
 ## What you can do
 
-| Work                | How Influence helps                                                                                                                                                                   |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Plan a campaign     | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts.                                                                                      |
-| Prepare content     | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote.                                                             |
+| Work | How Influence helps |
+| --- | --- |
+| Plan a campaign | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts. |
+| Prepare content | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote. |
 | Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Attach saved images and videos in the right order, then review them in Influence. |
-| Schedule a set      | Prepare up to 10 posts and 50 account or recipient deliveries in one batch. Review every exact post before scheduling; image approval stays in Influence.                             |
-| Follow delivery     | Check each destination's publishing status and the verified post link when available.                                                                                                 |
-| Read Insights       | Read available connected-account and post metrics, and refresh supported reporting.                                                                                                   |
+| Schedule a set | Prepare up to 10 posts and 50 account or recipient deliveries in one batch. Review every exact post before scheduling; image approval stays in Influence. |
+| Follow delivery | Check each destination's publishing status and the verified post link when available. |
+| Read Insights | Read available connected-account and post metrics, and refresh supported reporting. |
 
 Try asking your connected assistant:
 
@@ -26,18 +26,9 @@ Try asking your connected assistant:
 - “Show the status and published links for that campaign.”
 - “Summarize the available Insights for our connected accounts.”
 
-Use images and videos from your Influence media library for galleries, Stories,
-Reels and other formats supported by the selected account. The full connection
-can import supported images when the assistant can supply the file and has media
-write access; other files use Influence upload. Importing an image does not
-approve publication. TikTok inbox uploads finish in TikTok; Direct posts finish their
-posting choices in Influence.
+Use images and videos from your Influence media library for galleries, Stories, Reels and other formats supported by the selected account. A connected assistant with media write access can import a supported image or video from a reachable HTTPS file link, or upload a file it can access through the media tools. See [Images and videos](#images-and-videos) for the transfer workflow. Importing media does not approve publication. TikTok inbox uploads finish in TikTok; Direct posts finish their posting choices in Influence.
 
-For bulk scheduling, the assistant can read your calendar and prepare a set of
-posts with individual reviews. Calendar reads do not reserve times or enforce
-spacing, and bulk scheduling does not change the web-app experience. Tools and
-file transfer depend on the installed client's support; a package update alone
-does not verify that a client has loaded the new tools.
+For bulk scheduling, the assistant can read your calendar and prepare a set of posts with individual reviews. Calendar reads do not reserve times or enforce spacing, and bulk scheduling does not change the web-app experience. Tools and file transfer depend on the installed client's support; a package update alone does not verify that a client has loaded the new tools.
 
 ## Workflow in Influence
 
@@ -55,12 +46,12 @@ Both images show an example workspace in the current Influence UI.
 
 Influence brings your channels into one workspace:
 
-| Channels                  | Connections                                                                                         |
-| ------------------------- | --------------------------------------------------------------------------------------------------- |
-| Social and video          | X, LinkedIn profiles and Pages, Instagram, Facebook, Threads, YouTube, TikTok, Pinterest and Twitch |
-| Communities and messaging | Discord, Slack, Telegram and WhatsApp Business                                                      |
-| Open networks             | Mastodon, Bluesky, Nostr and Pixelfed                                                               |
-| Blogs and email           | DEV.to, Hashnode, WordPress, listmonk and Tumblr                                                    |
+| Channels | Connections |
+| --- | --- |
+| Social and video | X, LinkedIn profiles and Pages, Instagram, Facebook, Threads, YouTube, TikTok, Pinterest and Twitch |
+| Communities and messaging | Discord, Slack, Telegram and WhatsApp Business |
+| Open networks | Mastodon, Bluesky, Nostr and Pixelfed |
+| Blogs and email | DEV.to, Hashnode, WordPress, listmonk and Tumblr |
 
 Choose your connected accounts when preparing a draft. Account permissions, content formats and available Insights follow each channel's supported features.
 
@@ -103,53 +94,31 @@ gemini extensions install https://github.com/influence-so/influence-mcp
 
 When prompted, enter your scoped Influence API key. Gemini stores it as a sensitive extension setting and uses it for the hosted MCP connection. The extension includes the same Influence customer skill and review workflow. See [Gemini CLI extensions](https://geminicli.com/docs/extensions/reference/).
 
-If Influence is already installed but `/influence` is missing, update the
-extension once:
+If Influence is already installed but `/influence` is missing, update the extension once:
 
 ```text
 gemini extensions update influence
 ```
 
-Restart Gemini CLI after installing or updating. In later conversations, use
-`/influence` to check your connected accounts, or `/influence` followed by your
-request. This native command activates the included skill; it does not grant
-publishing approval. See [custom commands](https://geminicli.com/docs/cli/custom-commands/).
+Restart Gemini CLI after installing or updating. In later conversations, use `/influence` to check your connected accounts, or `/influence` followed by your request. This native command activates the included skill; it does not grant publishing approval. See [custom commands](https://geminicli.com/docs/cli/custom-commands/).
 
-If your Influence key expires or is revoked, create a replacement in Influence
-Settings and run:
+If your Influence key expires or is revoked, create a replacement in Influence Settings and run:
 
 ```text
 gemini extensions config influence
 ```
 
-Confirm replacing the saved setting and enter the new key only in Gemini's
-protected terminal prompt, then restart Gemini CLI. Keep the extension installed;
-the key does not go in the command, chat or extension files.
+Confirm replacing the saved setting and enter the new key only in Gemini's protected terminal prompt, then restart Gemini CLI. Keep the extension installed; the key does not go in the command, chat or extension files.
 
 This extension connects Gemini CLI. Gemini web and Google Workspace have separate integration options. For manual configuration, use the [Influence Gemini guide](https://influence.so/gemini).
 
 ## Kimi Work
 
-Use an account with Kimi Work and K3 access. Select **K3** before starting a new
-task. In **Plugins → Custom Plugin**, open **PluginBuilder** and ask it to import
-the Influence plugin from
-`https://github.com/influence-so/influence-mcp/tree/main/kimi-work`, preserving
-its included skill and connection settings.
+Use an account with Kimi Work and K3 access. Select **K3** before starting a new task. In **Plugins → Custom Plugin**, open **PluginBuilder** and ask it to import the Influence plugin from `https://github.com/influence-so/influence-mcp/tree/main/kimi-work`, preserving its included skill and connection settings.
 
-In **Personal**, choose **Install**. Kimi opens Influence's sign-in and permission
-review in your browser; select only the permissions your workflow needs. Wait
-until installation completes, then start a new K3 task and ask Influence to list
-your connected accounts without creating or publishing anything. Check the
-result before creating a draft. Review and approve an exact post in signed-in
-Influence before publishing.
+In **Personal**, choose **Install**. Kimi opens Influence's sign-in and permission review in your browser; select only the permissions your workflow needs. Wait until installation completes, then start a new K3 task and ask Influence to list your connected accounts without creating or publishing anything. Check the result before creating a draft. Review and approve an exact post in signed-in Influence before publishing.
 
-The `kimi-work/` plugin uses Kimi's native OAuth connection and the same Influence
-customer skill. In later K3 tasks, select the installed Influence plugin from
-Plugins; no import is needed for each task. Reconnect only when Kimi requests it
-or your Influence connection has expired or been revoked. No API key goes in
-chat, plugin files or a model prompt. Work
-availability depends on your account and region; this setup does not connect
-Kimi web, Claw or ordinary Plus chats. See the [Influence Kimi guide](https://influence.so/kimi).
+The `kimi-work/` plugin uses Kimi's native OAuth connection and the same Influence customer skill. In later K3 tasks, select the installed Influence plugin from Plugins; no import is needed for each task. Reconnect only when Kimi requests it or your Influence connection has expired or been revoked. No API key goes in chat, plugin files or a model prompt. Work availability depends on your account and region; this setup does not connect Kimi web, Claw or ordinary Plus chats. See the [Influence Kimi guide](https://influence.so/kimi).
 
 ## Kimi Code
 
@@ -165,8 +134,7 @@ After installation finishes, enter `/reload` as a separate command.
 
 The native `kimi.plugin.json` loads the same Influence skill and connects the hosted HTTP MCP server using `bearerTokenEnvVar`. Use `/mcp` to check that Influence tools are available. The skill loads when a session starts or resumes; use `/skill:influence` to select it explicitly in a later conversation. Keep the key available when starting Code and replace it when it expires or is revoked. No local server or hook is installed. See [Kimi Code plugins](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins.html) and the [Influence Kimi guide](https://influence.so/kimi).
 
-The root plugin targets Kimi Code. Installing it does not install the separate
-Work plugin or connect Kimi web.
+The root plugin targets Kimi Code. Installing it does not install the separate Work plugin or connect Kimi web.
 
 ## DeepSeek Harness
 
@@ -224,19 +192,13 @@ This uses Manus’s native remote MCP client and does not require a local server
 
 ## OpenClaw
 
-These instructions use OpenClaw **2026.9.8** and a
-[supported Node.js version](https://docs.openclaw.ai/install).
-Keep your scoped key in your private `~/.openclaw/.env` file as
-`INFLUENCE_MCP_TOKEN`, or make it available in the environment that starts
-OpenClaw. Save Influence's native connection before installing the plugin:
+These instructions use OpenClaw **2026.9.8** and a [supported Node.js version](https://docs.openclaw.ai/install). Keep your scoped key in your private `~/.openclaw/.env` file as `INFLUENCE_MCP_TOKEN`, or make it available in the environment that starts OpenClaw. Save Influence's native connection before installing the plugin:
 
 ```sh
 openclaw mcp set influence '{"url":"https://influence.so/api/mcp","transport":"streamable-http","headers":{"Authorization":"Bearer ${INFLUENCE_MCP_TOKEN}"}}'
 ```
 
-This saves the key reference, without connecting. OpenClaw resolves it from your
-private environment and uses this saved definition instead of the plugin's
-connection settings. See [native MCP configuration](https://docs.openclaw.ai/cli/mcp/registry).
+This saves the key reference, without connecting. OpenClaw resolves it from your private environment and uses this saved definition instead of the plugin's connection settings. See [native MCP configuration](https://docs.openclaw.ai/cli/mcp/registry).
 
 Download this repository and install its existing Claude-format bundle:
 
@@ -245,13 +207,7 @@ git clone https://github.com/influence-so/influence-mcp influence
 openclaw plugins install ./influence
 ```
 
-Review and accept OpenClaw's source and plugin capability prompts, then start or
-restart your Gateway. The native installer includes the Influence skill and
-icon without a local server, hook or wrapper. In later conversations, use
-`/influence` followed by your request. Keep the installation; update your private
-key when it expires or is revoked. Installing the plugin does not approve a
-post. See [plugin bundles](https://docs.openclaw.ai/plugins/bundles) and the
-[Influence OpenClaw guide](https://influence.so/openclaw).
+Review and accept OpenClaw's source and plugin capability prompts, then start or restart your Gateway. The native installer includes the Influence skill and icon without a local server, hook or wrapper. In later conversations, use `/influence` followed by your request. Keep the installation; update your private key when it expires or is revoked. Installing the plugin does not approve a post. See [plugin bundles](https://docs.openclaw.ai/plugins/bundles) and the [Influence OpenClaw guide](https://influence.so/openclaw).
 
 ## Other assistants
 
@@ -264,6 +220,14 @@ The native Claude plugin layout is also accepted by the [Grok Build plugin marke
 Read the [customer skill](skills/influence/SKILL.md) for the complete workflow. Display the exact review and wait for a fresh approval before publishing or changing a schedule. Review attached images and videos before approving the post. Scheduled or accepted work is not a published post; preserve the same request ID after an uncertain result.
 
 IQ planning and image generation spend credits only through their explicitly confirmed service actions. A quote or queued job is not completed content.
+
+## Images and videos
+
+Use `mediaImport` when your assistant has an authorized HTTPS file link, including a real ChatGPT file reference. Influence transfers that file; the assistant does not need its own HTTP upload tool. Supported images can be up to 20 MiB and videos up to 250 MiB. For local files, the SDK, CLI or multipart upload tools need access to the actual file and HTTP transfer. Workspace upload budgets still apply. If the host provides neither an accessible file reference nor local file transfer, upload in signed-in Influence and resume the saved draft afterward.
+
+Uploads require `media:write`. Older connections, including Claude connections created without that permission, need explicit consent through the same client's reconnect flow. Existing read-only access never grants uploads automatically.
+
+For local files, the workflow is create → sign and PUT parts → complete → check until ready → save the returned asset ID in a draft. `mediaImport` handles that transfer for file references. Keep the same `clientKey` when retrying the same video; imports without one use `file_id`. Only `ready` media is attachable. Uploads do not publish or approve content; image and video publication retains the exact visual review in Influence.
 
 ## Pricing and help
 
