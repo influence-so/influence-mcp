@@ -14,8 +14,8 @@ This repository contains customer connection settings and instructions for the h
 | --- | --- |
 | Plan a campaign | Use saved brand context to develop campaign ideas and revise a plan for your connected accounts. |
 | Prepare content | Save and revise social drafts. Create image ideas and generate images through Influence IQ with a confirmed credit quote. |
-| Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Attach saved images and videos in the right order, then review them in Influence. |
-| Schedule a set | Prepare up to 10 posts and 50 account or recipient deliveries in one batch. Review every exact post before scheduling; image approval stays in Influence. |
+| Review and schedule | Review the exact text, account, settings and time before approving a post or changing its schedule. Upload or attach images and videos in the right order, then review them in chat. |
+| Schedule a set | Prepare up to 10 posts and 50 account or recipient deliveries in one batch. Review every exact post and its media, then approve the complete set once. |
 | Follow delivery | Check each destination's publishing status and the verified post link when available. |
 | Read Insights | Read available connected-account and post metrics, and refresh supported reporting. |
 
@@ -26,7 +26,7 @@ Try asking your connected assistant:
 - “Show the status and published links for that campaign.”
 - “Summarize the available Insights for our connected accounts.”
 
-Use images and videos from your Influence media library for galleries, Stories, Reels and other formats supported by the selected account. A connected assistant with media write access can import a supported image or video from a reachable HTTPS file link, or upload a file it can access through the media tools. See [Images and videos](#images-and-videos) for the transfer workflow. Importing media does not approve publication. TikTok inbox uploads finish in TikTok; Direct posts finish their posting choices in Influence.
+Use images and videos from your Influence media library for galleries, Stories, Reels and other formats supported by the selected account. A connected assistant with media write access can import a supported image or video from a reachable HTTPS file link, or upload a file it can access through the media tools. See [Images and videos](#images-and-videos) for the transfer workflow. Importing media does not approve publication. TikTok inbox uploads finish in TikTok. Direct Post uses an interactive review card inside supported AI clients; text-only clients need the Influence draft editor for TikTok’s required privacy and consent controls.
 
 For bulk scheduling, the assistant can read your calendar and prepare a set of posts with individual reviews. Calendar reads do not reserve times or enforce spacing, and bulk scheduling does not change the web-app experience. Tools and file transfer depend on the installed client's support; a package update alone does not verify that a client has loaded the new tools.
 
@@ -116,7 +116,7 @@ This extension connects Gemini CLI. Gemini web and Google Workspace have separat
 
 Use an account with Kimi Work and K3 access. Select **K3** before starting a new task. In **Plugins → Custom Plugin**, open **PluginBuilder** and ask it to import the Influence plugin from `https://github.com/influence-so/influence-mcp/tree/main/kimi-work`, preserving its included skill and connection settings.
 
-In **Personal**, choose **Install**. Kimi opens Influence's sign-in and permission review in your browser; select only the permissions your workflow needs. Wait until installation completes, then start a new K3 task and ask Influence to list your connected accounts without creating or publishing anything. Check the result before creating a draft. Review and approve an exact post in signed-in Influence before publishing.
+In **Personal**, choose **Install**. Kimi opens Influence's sign-in and permission review in your browser; select only the permissions your workflow needs. Wait until installation completes, then start a new K3 task and ask Influence to list your connected accounts without creating or publishing anything. Check the result before creating a draft. Review the exact post and media, then explicitly approve it before publishing.
 
 The `kimi-work/` plugin uses Kimi's native OAuth connection and the same Influence customer skill. In later K3 tasks, select the installed Influence plugin from Plugins; no import is needed for each task. Reconnect only when Kimi requests it or your Influence connection has expired or been revoked. No API key goes in chat, plugin files or a model prompt. Work availability depends on your account and region; this setup does not connect Kimi web, Claw or ordinary Plus chats. See the [Influence Kimi guide](https://influence.so/kimi).
 
@@ -184,7 +184,7 @@ Open [Influence Settings → Manus](https://influence.so/sign-in?next=%2Fapp%2Fs
 
 Open **Manage → Edit configuration → Custom headers → Add custom header**. Set the header name to `Authorization` and its value to `Bearer` followed by one space and your scoped key. This field displays the key. Keep it out of chat and shared exports, and do not choose **Publish to Projects**.
 
-Choose **Try it out** and ask Influence to list your connected accounts and summarize your saved Brand Guidelines without creating, publishing or scheduling anything. Check those results before creating a draft. Review and approve the exact post while signed in to Influence.
+Choose **Try it out** and ask Influence to list your connected accounts and summarize your saved Brand Guidelines without creating, publishing or scheduling anything. Check those results before creating a draft. Review the exact post and media, then explicitly approve it.
 
 Download the [Influence skill ZIP](https://influence.so/downloads/influence-skill.zip). In Manus, open **Skills** and choose the option to upload a skill. The archive contains `SKILL.md` at its root. In later tasks, type `/` and select Influence from your installed skills. For a project, select it in that project's skill library too. Keep the private MCP connector configured and replace its key when it expires or is revoked. The skill adds workflow instructions; the MCP connection must be configured separately. See [Manus skill installation and use](https://help.manus.im/en/articles/14753565-how-to-share-and-use-skills-in-manus).
 
@@ -217,17 +217,19 @@ The native Claude plugin layout is also accepted by the [Grok Build plugin marke
 
 ## Use and approval
 
-Read the [customer skill](skills/influence/SKILL.md) for the complete workflow. Display the exact review and wait for a fresh approval before publishing or changing a schedule. Review attached images and videos before approving the post. Scheduled or accepted work is not a published post; preserve the same request ID after an uncertain result.
+Read the [customer skill](skills/influence/SKILL.md) for the complete workflow. Display the exact review and wait for a fresh approval before publishing or changing a schedule. Use the in-chat review card when available, or inspect the returned media previews and explicitly approve the complete review in chat. WhatsApp visual messages still require signed-in Influence review. Scheduled or accepted work is not a published post; preserve the same request ID after an uncertain result.
 
 IQ planning and image generation spend credits only through their explicitly confirmed service actions. A quote or queued job is not completed content.
 
 ## Images and videos
 
-Use `mediaImport` when your assistant has an authorized HTTPS file link, including a real ChatGPT file reference. Influence transfers that file; the assistant does not need its own HTTP upload tool. Supported images can be up to 20 MiB and videos up to 250 MiB. For local files, the SDK, CLI or multipart upload tools need access to the actual file and HTTP transfer. Workspace upload budgets still apply. If the host provides neither an accessible file reference nor local file transfer, upload in signed-in Influence and resume the saved draft afterward.
+Use `mediaImport` when your assistant has an authorized HTTPS file link, including a real ChatGPT file reference. Influence transfers that file; the assistant does not need its own HTTP upload tool. HTTPS imports support images up to 20 MiB and videos up to 250 MiB. Direct MP4 uploads support up to 5 GB for YouTube and up to 1 GB for other platforms, with lower limits where a provider requires them. Larger videos must already use H.264/AAC; automatic MOV/WebM/M4V conversion is limited to 250 MiB. The workspace allowance is 50 GB and 60 upload starts per rolling 24 hours. For local files, the multipart upload tools need access to the actual file and HTTP transfer. If the host provides neither an accessible file reference nor local file transfer, upload in signed-in Influence and resume the saved draft afterward.
 
 Uploads require `media:write`. Older connections, including Claude connections created without that permission, need explicit consent through the same client's reconnect flow. Existing read-only access never grants uploads automatically.
 
-For local files, the workflow is create → sign and PUT parts → complete → check until ready → save the returned asset ID in a draft. `mediaImport` handles that transfer for file references. Keep the same `clientKey` when retrying the same video; imports without one use `file_id`. Only `ready` media is attachable. Uploads do not publish or approve content; image and video publication retains the exact visual review in Influence.
+Local transfers also need outbound network access in the assistant’s environment. If network settings block the upload, enable that access and, where domain controls are available, allow only the storage hostname from Influence’s upload URL. Ask the assistant to show the hostname. In Claude, open Settings → Capabilities and enable code execution and Allow network egress, then add that hostname to Additional allowed domains if available. Your organization may require an admin to change these settings. Connector access and local network access are separate; the HTTPS/file-reference import above needs no local upload connection.
+
+For local files, the workflow is one confirmed create → parallel PUT parts → complete → check until ready → save the returned asset ID in a draft. Create returns signed part URLs; page or renew them as needed. Part, complete and cancel calls continue the same authorized upload without another Influence confirmation. If already available in your environment, the Influence SDK or CLI handles these steps and retries temporary part failures automatically. This connector does not install either helper; the multipart tools work without them. If the connection remains unavailable, retry the same file and key to resume. `mediaImport` handles that transfer for file references. Keep the same `clientKey` when retrying the same video; imports without one use `file_id`. Only `ready` media is attachable. Uploads do not publish or approve content; publication still requires inspection and approval of the exact review.
 
 ## Pricing and help
 
