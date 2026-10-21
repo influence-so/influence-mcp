@@ -26,7 +26,7 @@ Try asking your connected assistant:
 - “Show the status and published links for that campaign.”
 - “Summarize the available Insights for our connected accounts.”
 
-Use images and videos from your Influence media library for galleries, Stories, Reels and other formats supported by the selected account. A connected assistant with media write access can import a supported image or video from a reachable HTTPS file link, or upload a file it can access through the media tools. See [Images and videos](#images-and-videos) for the transfer workflow. Importing media does not approve publication. TikTok inbox uploads finish in TikTok. Direct Post uses an interactive review card inside supported AI clients; text-only clients need the Influence draft editor for TikTok’s required privacy and consent controls.
+Use images and videos from your Influence media library for galleries, Stories, Reels and other formats supported by the selected account. A connected assistant with media write access can import a supported image or video from a reachable HTTPS file link, or upload a file it can access through the media tools. See [Images and videos](#images-and-videos) for the transfer workflow. Importing media does not approve publication. TikTok inbox uploads finish in TikTok. For TikTok Direct, give the posting choices and consent in chat, then approve the updated exact review. A review card is optional.
 
 For bulk scheduling, the assistant can read your calendar and prepare a set of posts with individual reviews. Calendar reads do not reserve times or enforce spacing, and bulk scheduling does not change the web-app experience. Tools and file transfer depend on the installed client's support; a package update alone does not verify that a client has loaded the new tools.
 
@@ -57,9 +57,15 @@ Choose your connected accounts when preparing a draft. Account permissions, cont
 
 ## Claude
 
-Use [Connect to Claude](https://influence.so/claude) for the primary OAuth connection. No API key is needed. Follow the [Cowork guide](https://influence.so/claude-cowork) or [Claude Code guide](https://influence.so/claude-code) to use the same Claude-account connection where available.
+Use [Connect to Claude](https://influence.so/claude) for the recommended sign-in connection. No API key is needed. Sign in to Claude Code with that same Claude account to reuse it, or follow the [Cowork guide](https://influence.so/claude-cowork).
 
-The Claude Code marketplace plugin below uses the full Influence endpoint and a scoped API key. Choose it when you need the additional tools.
+After connecting, ask:
+
+> Use Influence to show my connected email, workspace and social accounts. Check whether I can create drafts and upload media. Don't create, schedule or publish anything. Keep the reply brief.
+
+Check that the Influence email and workspace are correct before continuing. Your Claude sign-in and Influence sign-in can use different emails.
+
+The [custom Claude Code setup](#claude-code-custom-setup) below uses a separate scoped API key. Use it only if you want a separate connection or your Claude Code sign-in cannot reuse Claude connectors. See [Claude's connection requirements](https://code.claude.com/docs/en/mcp#use-mcp-servers-from-claudeai).
 
 ## Connection
 
@@ -71,7 +77,7 @@ For the bearer-key setups below, create a scoped API key in [Influence Settings 
 
 The root `.mcp.json` reads the bearer key from that environment variable. No key is included in this repository. ChatGPT, Claude and the [Kimi Work plugin](#kimi-work) use Influence sign-in through their native OAuth connection.
 
-## Claude Code
+## Claude Code: custom setup
 
 Add this marketplace and install its plugin:
 
@@ -80,11 +86,11 @@ Add this marketplace and install its plugin:
 /plugin install influence@influence-mcp
 ```
 
-Start Claude Code with `INFLUENCE_MCP_TOKEN` available, then use `/mcp` to inspect the connection. This package has no local server, install script or hook. See [Claude Code MCP setup](https://code.claude.com/docs/en/mcp).
+Start Claude Code with `INFLUENCE_MCP_TOKEN` available. In the terminal client, use `/mcp` to inspect the connection. This package has no local server, install script or hook. See [Claude Code MCP setup](https://code.claude.com/docs/en/mcp).
 
 ## Gemini CLI
 
-Before your first Influence request, set up [Gemini CLI model access](https://geminicli.com/docs/get-started/authentication/) with a Gemini API key or supported enterprise authentication. Your Influence key only connects Influence.
+Before your first Influence request, start Gemini CLI and choose **Sign in with Google**. A Gemini API key or Vertex AI is also supported; see [Gemini CLI authentication](https://geminicli.com/docs/get-started/authentication/). Your separate Influence key only connects Influence.
 
 Install the extension:
 
@@ -223,7 +229,7 @@ IQ planning and image generation spend credits only through their explicitly con
 
 ## Images and videos
 
-Use `mediaImport` when your assistant has an authorized HTTPS file link, including a real ChatGPT file reference. Influence transfers that file; the assistant does not need its own HTTP upload tool. HTTPS imports support images up to 20 MiB and videos up to 250 MiB. Direct MP4 uploads support up to 5 GB for YouTube and up to 1 GB for other platforms, with lower limits where a provider requires them. Larger videos must already use H.264/AAC; automatic MOV/WebM/M4V conversion is limited to 250 MiB. The workspace allowance is 50 GB and 60 upload starts per rolling 24 hours. For local files, the multipart upload tools need access to the actual file and HTTP transfer. If the host provides neither an accessible file reference nor local file transfer, upload in signed-in Influence and resume the saved draft afterward.
+Use `mediaImport` when your assistant has an authorized HTTPS file link, including a real ChatGPT file reference. Influence transfers that file; the assistant does not need its own HTTP upload tool. HTTPS imports support images up to 20 MiB and videos up to 250 MiB. Direct MP4 uploads support up to 5 GB for YouTube and up to 1 GB for other platforms, with lower limits where a provider requires them. All videos must use standard dynamic range (SDR). Larger videos must already use H.264/AAC; automatic MOV/WebM/M4V conversion is limited to 250 MiB. The workspace allowance is 50 GB and 60 upload starts per rolling 24 hours. For local files, the multipart upload tools need access to the actual file and HTTP transfer. If the host provides neither an accessible file reference nor local file transfer, upload in signed-in Influence and resume the saved draft afterward.
 
 Uploads require `media:write`. Older connections, including Claude connections created without that permission, need explicit consent through the same client's reconnect flow. Existing read-only access never grants uploads automatically.
 
